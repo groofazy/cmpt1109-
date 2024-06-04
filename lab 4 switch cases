@@ -1,0 +1,102 @@
+// lab 4 code
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const double pi = 3.14159;
+    const double half = 0.5;
+
+    double length;
+    double width;
+
+    double base;
+    double height;
+
+    int choice;
+
+    cout << "Geometry Calculator" << endl;
+    cout << "1. Calculate the Area of a Circle" << endl;
+    cout << "2. Calculate the Area of a Rectangle" << endl;
+    cout << "3. Calculate the Area of a Triangle" << endl;
+    cout << "4. Quit" << endl;
+    cin >> choice;
+    
+    switch (choice)
+    {
+    case 1:
+    
+        double radius;
+
+        cout << "Input Radius: ";
+        cin >> radius;
+
+        if (radius < 1)
+        {
+            cout << "Cannot compute negative integers!";
+        }
+
+        else
+        {
+        double circle_area = pi * radius * radius;
+
+        cout << "Area is " << circle_area << endl;
+        }
+
+        break;
+    
+
+    
+    case 2:
+
+        cout << "Input Length and Width: ";
+        cin >> length >> width;
+
+        if (length < 1 || width < 1)
+        {
+            cout << "Cannot compute negative integers!";
+        }
+        
+        else
+        {
+            double square_area = length * width;
+
+            cout << "Area is " << square_area << endl;
+        }
+        break;
+    
+
+    
+    case 3:
+
+        cout << "Input length of base and height: ";
+        cin >> base >> height;
+
+        if (base < 1 || height < 1)
+        {
+            cout << "Cannot compute negative integers!";
+        }
+
+        else {
+            double triangle_area = base * height * half;
+
+            cout << "Area is " << triangle_area << endl;
+        }
+        break;
+    
+
+    
+    case 4:
+        cout << "Program Ended, Error";
+        break;
+    
+
+    
+    default: cout << "Invalid Expression" << endl;
+    
+
+    }
+    return 0;
+}
+
