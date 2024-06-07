@@ -12,11 +12,7 @@ int main()
     int count;
     const int min_val = 0;
 
-    cout << "Input a positive integer value: ";
-    cin >> num;
-
     do {
-        cout << "Number can't be less than 0" << endl;
         cout << "Input a positive integer value: ";
         cin >> num;
     } while (num < min_val);
