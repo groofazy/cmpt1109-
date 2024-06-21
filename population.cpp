@@ -30,14 +30,11 @@ int main()
         cin >> population;
     }
 
-    for (int count = 0; count < num_days; count++)
+    for (int day = 1; day < num_days + 1; day++)
     {
-        day = count + 1;
-        population_size = day * pct;
+        population += population * (pct / 100);
 
-        cout << "Day " << day << "\t" << "Size of Population: " << population_size;
+        cout << "Day " << day << "\t" << "Size of Population: " << population << endl;
     }
-
-
-
+    return 0;
 }
