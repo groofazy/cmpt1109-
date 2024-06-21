@@ -2,19 +2,20 @@
 
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
 
     double burned_cals = 3.6;
     int min_intervals = 5;
-    int count;
+    int count, minutes;
 
-    for (count = 1; count < 5; count++)
+    for (count = 1; count < 7; count++)
     {
-        cout << "Minute: " << count << 
+        minutes = count * 5;
+        cout << "Minute: " << minutes << "\t" << "Calories Burned: " << burned_cals * minutes << endl; 
     }
-
-
 
     return 0;
 }
