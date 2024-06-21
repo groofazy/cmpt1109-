@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+
+double calculateRetail(double, double);
+int main()
+{
+    double wholesale_cost, markup_pct, retail_cost;
+
+    do {
+        cout << "Enter item's wholesale cost and markup percentage: ";
+        cin >> wholesale_cost >> markup_pct;
+    } while (wholesale_cost < 0 || markup_pct < 0);
+
+    retail_cost = calculateRetail(wholesale_cost, markup_pct);
+
+    cout << "Retail Price: $" << retail_cost;
+    return 0;
+}
+
+
+double calculateRetail(double cost, double pct)
+{
+    double retail;
+
+    retail = cost + (cost * pct/100);
+    return retail;
+}

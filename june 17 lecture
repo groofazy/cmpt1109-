@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+void greetings(double, string); // function prototype
+double sum(double a, double b);
+
+int main()
+{
+    double x = 5.1, y = 2.1, z;
+
+    cout << "Hello World" << endl;
+    greetings(4.6, "Hola"); // function call, argument
+    cout << "You are back in the main function" << endl;
+    z = sum(x, y);
+    cout << z << endl;
+    return 0;
+}
+
+void greetings(double a, string b) // 1 parameter
+{
+    cout << a << endl;
+    cout << b << endl;
+}
+double sum(double a, double b)
+{
+    double c;
+    c = a + b;
+    return c;
+}
