@@ -6,7 +6,7 @@ int selectionSort(long[], int);
 
 int main()
 {
-    const int SIZE = 20;
+    const int SIZE = 18;
 
     long accounts1[SIZE] =
 	{ 5658845,  4520125,  7895122,
