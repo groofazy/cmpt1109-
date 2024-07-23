@@ -52,7 +52,7 @@ int bubbleSort(long arr[], int size)
 
     for(maxElement = size - 1; maxElement > 0; maxElement--)
     {
-        for(index = 0; index < size; index++)
+        for(index = 0; index < maxElement; index++)
         {
             if(arr[index] > arr[index+1])
             {
