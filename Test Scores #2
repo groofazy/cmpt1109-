@@ -1,0 +1,87 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+void selectionSort(int*, int size, string*);
+double avgScore(int* scores, double size);
+
+int main()
+{
+	int* scores = nullptr; // initialize ptr = 0
+	string* names = nullptr;
+	double size, mark;
+	string student;
+
+	cout << "Tests to be marked: ";
+	cin >> size;
+
+	scores = new int[size]; // dynamically allocate array
+	names = new string[size]; // dynamically allocate array
+
+	for (int i = 0; i < size; i++)
+	{
+		cout << "student: ";
+		cin >> *(names + i);
+		cout << "mark: ";
+		cin >> mark;
+		* (scores + i) = mark;
+	}
+	cout << endl;
+
+	selectionSort(scores, size, names);
+
+	cout << "Ascending Order" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		
+		cout << *(names + i) << " " << *(scores + i) << endl;
+	}
+
+	cout << endl;
+	cout << "Average: " << avgScore(scores, size);
+
+	delete[] scores;
+	scores = nullptr;
+
+	return 0;
+}
+
+void selectionSort(int *scores, int size, string *names)
+{
+	int minIndex, minVal;
+	string minName;
+
+	for (int start = 0; start < (size - 1); start++)
+	{
+		minVal = scores[start];
+		minIndex = start;
+		minName = names[start];
+		for (int index = start + 1; index < size; index++)
+		{
+			if ((* (scores + index) < (minVal)))
+			{
+				minVal = scores[index];
+				minName = names[index];
+				minIndex = index;
+			}
+		}
+		swap(scores[minIndex], scores[start]);
+		swap(names[minIndex], names[start]);
+	}
+}
+
+double avgScore(int* scores, double size)
+{
+	double avg;
+	int total = 0;
+
+	for (int i = 1 ; i < size; i++)
+	{
+		total += (*(scores + i));
+	}
+
+	avg = total / (size - 1);
+
+	return avg;
+}
