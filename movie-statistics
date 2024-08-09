@@ -1,0 +1,131 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+void selectionSort(int* arr, int size);
+double median(int* arr, int size);
+double mode(int* arr, int size);
+double avg(int* arr, int size);
+
+int main()
+{
+	int* students = nullptr;
+	int num;
+
+	do {
+		cout << "# of students surveyed: ";
+		cin >> num;
+	} while (num < 0);
+
+	students = new int[num]; // dynamically allocate array
+
+	for (int i = 0; i < num; i++) // storing num of movies in array
+	{
+		cout << "# of movies watched for student " << i + 1 << ": ";
+		cin >> *(students + i); 
+	}
+	selectionSort(students, num);
+
+	cout << "Median: " << median(students, num) << endl;
+	cout << "Mode: " << mode(students, num) << endl;
+	cout << "Average: " << avg(students, num) << endl;
+
+	return 0;
+}
+
+void selectionSort(int* arr, int size)
+{
+	int minVal, minIndex;
+
+	for (int start = 0; start < (size - 1); start++)
+	{
+		minVal = arr[start];
+		minIndex = start;
+		
+		for (int i = start + 1; i < size; i++)
+		{
+			if (arr[i] < minVal)
+			{
+				minVal = arr[i];
+				minIndex = i;
+			}
+		}
+		swap(arr[minIndex], arr[start]);
+	}
+}
+double median(int* arr, int size)
+{
+	double med;
+
+	if (size % 2 == 0)
+	{
+		int mid1 = size / 2, mid2 = (size / 2) - 1;
+		med = ((*(arr + mid1) + *(arr + mid2)) / 2.0);
+	}
+	else
+	{
+		med = *(arr + (size / 2));
+	}
+
+	return med;
+}
+double avg(int* arr, int size)
+{
+	double total = 0;
+	double avg;
+
+	for (int i = 0; i < size; i++)
+	{
+		total += *(arr + i);
+		avg = total / size;
+	}
+	return avg;
+}
+double mode(int* arr, int size)
+{
+	int* freq = nullptr;
+	int mode = -1;
+	int count = 0;
+	int highest = 0;
+	int element = 0;
+
+	freq = new int[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		*(freq + i) = 0; // set all elements in freq to 0
+	}
+
+	for (int count = 0; count < size; count++)
+	{
+		for (int count2 = 0; count2 < size; count2++)
+		{
+			if (*(arr + count) == *(arr + count2))
+			{
+				(*(freq + count))++;
+			}
+		}
+	}
+
+	highest = *freq;
+	
+	for (count = 1; count < size; count++)
+	{
+		if (*(freq + count) > highest)
+		{
+			highest = *(freq + count);
+			element = count;
+		}
+	}
+
+	freq = nullptr;
+
+	if (highest > 1)
+	{
+		mode = *(arr + element);
+	}
+
+	return mode;
+
+}
