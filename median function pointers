@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+void selectionSort(int arr[], int size);
+
+int main()
+{
+	int* arr = nullptr;
+	int size;
+	cout << "num elements: ";
+	cin >> size;
+
+	arr = new int[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		cin >> * (arr + i);
+	}
+
+	selectionSort(arr, size); // select sort array
+	
+	return 0;
+}
+
+void selectionSort(int arr[], int size)
+{
+	int minVal, minIndex;
+	double med;
+	for (int start = 0; start < (size - 1); start++)
+	{
+		minVal = arr[start];
+		minIndex = start;
+		for (int index = start + 1; index < size; index++)
+		{
+			if (arr[index] < minVal)
+			{
+				minVal = arr[index];
+				minIndex = index;
+			}
+		}
+		swap(arr[minIndex], arr[start]);
+	}
+
+	// calculating median
+
+	if (size % 2 == 0) // if array is even
+	{
+		cout << "array has an even amt of elements";
+		int mid1 = size / 2, mid2 = (size / 2) - 1;
+		med = ((*(arr + mid1) + *(arr + mid2)) / 2.0);
+		cout << med;
+	}
+	else
+	{
+		cout << "array has an odd amt of elements";
+		int mid = size / 2;
+		int med = (*(arr + mid));
+		cout << med;
+	}
+}
